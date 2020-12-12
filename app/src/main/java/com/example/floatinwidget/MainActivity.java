@@ -24,7 +24,10 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -461,10 +464,12 @@ public class MainActivity extends AppCompatActivity {
         ConstraintLayout cl = (ConstraintLayout)findViewById(R.id.mainactivity_layout);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        btn_float = (Button)findViewById(R.id.btn_float);
+        btn_float = (Button) findViewById(R.id.btn_float);
+        //버튼 애니메이션 효과
+        Animation anim = null;
+        anim = AnimationUtils.loadAnimation(this, R.anim.scale_ico);
+        btn_float.startAnimation(anim);
         btn_float.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -473,6 +478,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
 
         StringBuffer strBuffer = new StringBuffer();
