@@ -513,15 +513,7 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
                 count +=1;
             }
             answer = strBuffer.toString();
-//            String temp = strBuffer.toString();
-//            for(String xx : temp.split("\n")) {
-//                final String[] yy = xx.split("\t");
-//                if (temp.contains(yy[0])) {
-//                    //String subString = getStringCompat(answer, yy[0]);
-//                    temp = answer.replace(xx, "");
-//                }
-//            }
-//            answer = temp+answer;
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -619,12 +611,7 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
                         .setItems(colors, new DialogInterface.OnClickListener() {
                             @RequiresApi(api = Build.VERSION_CODES.M)
                             public void onClick(DialogInterface dialog, int which) {
-                                // The 'which' argument contains the index position of the selected item
                                 if (which==0) {
-//                                    Intent intent = getPackageManager().getLaunchIntentForPackage(installedApps.get(i).packages);
-//                                    if(intent != null){
-//                                        startActivity(intent);
-//                                    }
                                     clickedButton.setForeground(installedApps.get(i).icon);
                                     clickedButton.setBackground(null);
                                     switch( clickedButton.getId() ){
@@ -677,16 +664,9 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
 
                                     }
                                     clickedApp = installedApps.get(i);
-//                                    else {
-//                                        Toast.makeText(mPopupWindow.getContentView().getContext(), installedApps.get(i).packages + " Error, Please Try Again...", Toast.LENGTH_SHORT).show();
-//                                    }
                                     mPopupWindow.dismiss();
                                 }
                                 if (which==1){
-//                                    Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-//                                    intent.setData(Uri.parse("package:" + installedApps.get(i).packages));
-//                                    Toast.makeText(mPopupWindow.getContentView().getContext(), installedApps.get(i).packages, Toast.LENGTH_SHORT).show();
-//                                    startActivity(intent);
                                     clickedApp = installedApps.get(i);
                                 }
                             }
@@ -700,11 +680,9 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
     @RequiresApi(api = Build.VERSION_CODES.N)
     private List<AppList> getInstalledApps() {
         Log.d("getinstalledapps","getinstalledapps start");
-
         PackageManager pm = getPackageManager();
         List<AppList> apps = new ArrayList<AppList>();
         List<PackageInfo> packs = getPackageManager().getInstalledPackages(PackageManager.GET_META_DATA);
-        //List<PackageInfo> packs = getPackageManager().getInstalledPackages(PackageManager.GET_PERMISSIONS);
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         List<ResolveInfo> listCam = getPackageManager().queryIntentActivities(intent, 0);
 
@@ -728,7 +706,6 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
                 Log.d("getinstalledapps",appName);
             }
         }
-
         Log.d("getinstalledapps","getinstalledapps end");
         return apps;
     }
